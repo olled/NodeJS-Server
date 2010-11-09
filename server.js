@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 var createServer = require("http").createServer;
 var url = require('url');
 var parse = require('url').parse
@@ -20,7 +24,6 @@ createServer(function (request, response) {
 		{
 			test = ''
 		}
-		
 		response.writeHead(200, {
 			'Content-Type': contentType,
 			"Content-Length": responseText.length
