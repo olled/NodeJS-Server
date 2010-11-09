@@ -1,5 +1,7 @@
 /**
- * 
+ * Handles urls in the REST format like:
+ * /me/users/json 
+ * /me/users/html 
  */
 
 var createServer = require("http").createServer;
