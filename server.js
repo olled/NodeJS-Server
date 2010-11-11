@@ -8,8 +8,11 @@ var createServer = require("http").createServer;
 var url = require('url');
 var parse = require('url').parse
 
-var serverUtils = require("./utils");
-var queryString = require("querystring");
+
+var serverUtils = require('./utils');
+var logs = require('./logs');
+ 
+
 
 createServer(function (request, response) {
 	if (request.method == 'GET') {
@@ -18,15 +21,18 @@ createServer(function (request, response) {
 		var responseText = 'Hello text\n';
 		var responseType = serverUtils.getResponseType(request);
 		
+		
 		if (responseType == serverUtils.JSONTYPE)
 		{
 			contentType = 'text/json';
 			responseText = JSON.stringify({id:1, name:'Olle'});
+			logs.log(JSON.stringify({id:1, name:'Olle'}),'json.txt');
 		}
 		else if (responseType == serverUtils.HTMLTYPE)
 		{
 			contentType = 'text/html';
 			responseText = 'Hello bra html world'
+			logs.log(responseText,'html.txt');
 		}
 		response.writeHead(200, {
 			'Content-Type': contentType,

@@ -1,5 +1,5 @@
 /**
- * Server utility functions functions
+ * Server utility functions
  * 
  */
 var url = require('url');
