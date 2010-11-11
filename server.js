@@ -17,10 +17,9 @@ var logs = require('./logs');
 createServer(function (request, response) {
 	if (request.method == 'GET') {
 		
-		var contentType = 'text';
-		var responseText = 'Hello text\n';
+		var contentType = 'text/html';
+		var responseText = 'Hello brave new html world'
 		var responseType = serverUtils.getResponseType(request);
-		
 		
 		if (responseType == serverUtils.JSONTYPE)
 		{
@@ -28,11 +27,11 @@ createServer(function (request, response) {
 			responseText = JSON.stringify({id:1, name:'Olle'});
 			logs.log(JSON.stringify({id:1, name:'Olle'}),'json.txt');
 		}
-		else if (responseType == serverUtils.HTMLTYPE)
+		else if (responseType == serverUtils.TEXTTYPE)
 		{
-			contentType = 'text/html';
-			responseText = 'Hello bra html world'
-			logs.log(responseText,'html.txt');
+			contentType = 'text';
+			responseText = 'Hello txt world'
+			logs.log(responseText,'text.txt');
 		}
 		response.writeHead(200, {
 			'Content-Type': contentType,
