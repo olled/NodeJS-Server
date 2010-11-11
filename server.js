@@ -7,24 +7,26 @@
 var createServer = require("http").createServer;
 var url = require('url');
 var parse = require('url').parse
-var serverUtils = require("utils");
-var queryString = require("querystring");
 
+var serverUtils = require("./utils");
+var queryString = require("querystring");
 
 createServer(function (request, response) {
 	if (request.method == 'GET') {
 		
-		var contentType = 'text/html';
-		var responseText = 'Hello World\n';
+		var contentType = 'text';
+		var responseText = 'Hello text\n';
+		var responseType = serverUtils.getResponseType(request);
 		
-		if (url.parse(request.url).pathname.lastIndexOf('/json') > -1)
+		if (responseType == serverUtils.JSONTYPE)
 		{
 			contentType = 'text/json';
 			responseText = JSON.stringify({id:1, name:'Olle'});
 		}
-		else if (url.parse(request.url).pathname.lastIndexOf('/html') > -1)
+		else if (responseType == serverUtils.HTMLTYPE)
 		{
-			test = ''
+			contentType = 'text/html';
+			responseText = 'Hello bra html world'
 		}
 		response.writeHead(200, {
 			'Content-Type': contentType,
