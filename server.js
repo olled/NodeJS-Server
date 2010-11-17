@@ -18,7 +18,7 @@ createServer(function (request, response) {
 	if (request.method == 'GET') {
 		
 		var contentType = 'text/html';
-		var responseText = 'Hello brave new html world'
+		var responseText = 'Hello brave new html world!'
 		var responseType = serverUtils.getResponseType(request);
 		
 		if (responseType == serverUtils.JSONTYPE)
