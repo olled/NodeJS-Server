@@ -1,5 +1,5 @@
 # NodeJS-Server
-This is a test to create an event server based on NodeJs.
+This is a test to create an event server based on NodeJs. Cool
 
 The server shall make it possible to sent message that the server will log to specific log files.
 
